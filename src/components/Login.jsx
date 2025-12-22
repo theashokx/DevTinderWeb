@@ -1,20 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constant";
 
 export const Login = () => {
   const [emailId, setEmail] = useState("ashok@gmail.com");
   const [password, setPassword] = useState("Ashok@123");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const loginHandle = async () => {
     try {
       const user = await axios.post(
-        "http://localhost:3000/login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
         },
         { withCredentials: true }
       );
+
+      console.log(user.data);
+      dispatch(addUser(user.data));
+      navigate("/");
     } catch (err) {
       console.log("STATUS:", err.response?.status);
       console.log("DATA:", err.response?.data);
