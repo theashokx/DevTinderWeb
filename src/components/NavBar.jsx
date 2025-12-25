@@ -13,7 +13,7 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
-      dispatch(removeUser());
+
       return navigate("/login");
     } catch (err) {
       err.response?.data || err.message;
@@ -24,7 +24,7 @@ const NavBar = () => {
     <>
       <div className="navbar bg-base-300 shadow-sm fixed top-0 z-50 h-16">
         <div className="flex-1 ">
-          <Link to="/" className="btn btn-ghost text-xl">
+          <Link to="/feed" className="btn btn-ghost text-xl">
             👨‍💻DevTinder
           </Link>
         </div>
@@ -52,7 +52,10 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/connections">Connections</Link>
+                </li>
+                <li>
+                  <Link to="/requests">Requests</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

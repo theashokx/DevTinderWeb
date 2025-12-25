@@ -34,9 +34,10 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <NavBar />
-      <div className="pt-16">
+
+      <div className="flex-1 pt-16">
         <Outlet />
       </div>
 
