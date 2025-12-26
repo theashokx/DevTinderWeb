@@ -130,7 +130,7 @@ const EditProfile = ({ user }) => {
         />
       </div>
       {showToast && (
-        <div className="toast toast-top toast-center">
+        <div className="toast toast-top toast-center fixed z-50">
           <div className="alert alert-success">
             <span>Profile saved successfully.</span>
           </div>

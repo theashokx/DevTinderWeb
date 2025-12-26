@@ -25,11 +25,22 @@ export const Connections = () => {
     getConnections();
   }, []);
 
-  if (!connections) return;
+  if (!connections) return null;
+
   if (connections.length === 0) {
     return (
-      <div>
-        <h1>Sorry No connections</h1>
+      <div className="w-full flex justify-center mt-8">
+        <div className="w-[500px] bg-base-200 p-6 rounded-xl shadow-lg text-center">
+          <h2 className="text-2xl font-semibold mb-2">No Connections Yet</h2>
+
+          <p className="text-gray-500 mb-4">
+            Once you start connecting, they’ll appear here 😊
+          </p>
+
+          <button className="btn btn-primary btn-sm" onClick={getConnections}>
+            Refresh
+          </button>
+        </div>
       </div>
     );
   }
